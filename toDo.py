@@ -1,6 +1,8 @@
 import datetime
 import os, shutil
 import time
+import pyperclip
+import requests
 
 tasks = ["Check emails", "Team meeting", "Code review"]
 tasks.append("Write documentation")
@@ -38,3 +40,14 @@ print("Log updated.")
 
 meet_time = datetime.datetime.now() + datetime.timedelta(hours=2)
 print("Meeting in:", meet_time - datetime.datetime.now())
+
+pyperclip.copy("Copy this to clipboard.")
+print("Clipboard now has:", pyperclip.paste())
+
+tasks = {"Check emails": True, "Team meeting": False, "Code review": True}
+completed = [t for t, done in tasks.items() if done]
+print("Completed Tasks:", completed)
+
+import requests
+response = requests.get("https://wttr.in/?format=3")
+print("Current weather:", response.text)
